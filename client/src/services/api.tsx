@@ -46,7 +46,7 @@ api.interceptors.response.use(
       try {
         const refreshToken = localStorage.getItem('refresh_token');
         if (refreshToken) {
-          const response = await axios.post(`${API_BASE_URL}/users/auth/token/refresh/`, {
+          const response = await axios.post(`${API_BASE_URL}/users/token/refresh/`, {
             refresh: refreshToken
           });
           
@@ -357,16 +357,16 @@ export interface CreateOrderData {
 
 export const authAPI = {
   // Authentication - UPDATED ENDPOINTS
-  login: (credentials: LoginData) => api.post('/users/auth/login/', credentials),
-  register: (userData: RegisterData) => api.post('/users/auth/register/', userData),
+  login: (credentials: LoginData) => api.post('/users/login/', credentials),
+  register: (userData: RegisterData) => api.post('/users/register/', userData),
   
   // Email verification - NEW ENDPOINTS
-  verifyEmail: (data: VerifyEmailData) => api.post('/users/auth/verify-email/', data),
-  resendVerification: (data: ResendVerificationData) => api.post('/users/auth/resend-verification/', data),
+  verifyEmail: (data: VerifyEmailData) => api.post('/users/verify-email/', data),
+  resendVerification: (data: ResendVerificationData) => api.post('/users/resend-verification/', data),
   
   // Session & Profile - UPDATED ENDPOINTS
   checkAuth: () => api.get('/users/me/'),
-  logout: (data?: any) => api.post('/users/auth/logout/', data),
+  logout: (data?: any) => api.post('/users/logout/', data),
   getProfile: () => api.get('/users/me/'),
   updateProfile: (data: UpdateProfileData) => {
     const formData = new FormData();
@@ -382,12 +382,12 @@ export const authAPI = {
   },
   
   // Password management - UPDATED ENDPOINTS
-  changePassword: (data: ChangePasswordData) => api.post('/users/auth/password/change/', data),
-  forgotPassword: (data: ForgotPasswordData) => api.post('/users/auth/password/reset/', data),
-  resetPassword: (data: ResetPasswordData) => api.post('/users/auth/password/reset/confirm/', data),
+  changePassword: (data: ChangePasswordData) => api.post('/users/password/change/', data),
+  forgotPassword: (data: ForgotPasswordData) => api.post('/users/password/reset/', data),
+  resetPassword: (data: ResetPasswordData) => api.post('/users/password/reset/confirm/', data),
   
   // Token refresh - UPDATED ENDPOINT
-  refreshToken: (refresh: string) => api.post('/users/auth/token/refresh/', { refresh }),
+  refreshToken: (refresh: string) => api.post('/users/token/refresh/', { refresh }),
   
   // REMOVED: OTP endpoints
   // verifyOTP: (data: VerifyOTPData) => api.post('/auth/verify-otp/', data), - REMOVED

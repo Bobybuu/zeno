@@ -24,7 +24,7 @@ urlpatterns = [
     path('health/', include('users.urls')),
     
     # Documentation
-    #path('api/docs/', include('docs.urls')),
+    path('api/docs/', include('docs.urls')),
 ]
 
 # Serve media files in development
