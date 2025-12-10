@@ -1,0 +1,25 @@
+asgiref==3.10.0
+boto3==1.40.50
+botocore==1.40.50
+django-cors-headers==4.9.0
+django-filter==25.1
+django-ses==4.4.0
+djangorestframework==3.16.1
+jmespath==1.0.1
+pillow==11.3.0
+psycopg2-binary==2.9.11
+python-dateutil==2.9.0.post0
+s3transfer==0.14.0
+six==1.17.0
+sqlparse==0.5.3
+tzdata==2025.2
+urllib3<1.27,>=1.25.4
+Django==4.2.16
+djangorestframework-simplejwt==5.3.1
+python-dotenv==1.0.1
+twilio==9.0.0
+phonenumbers>=8.13.0  # For phone number validation
+
+
+boto3>=1.26.0
+botocore>=1.29.0

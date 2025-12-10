@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Colors - Professional service platform palette */
+    --background: 0 0% 97%;
+    --foreground: 220 13% 13%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 13%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 13%;
+    
+    /* Navy blue for trust and professionalism */
+    --primary: 215 35% 25%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Orange for CTAs and Speed 7 branding */
+    --secondary: 25 95% 53%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 13% 45%;
+    
+    --accent: 25 95% 53%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    --border: 214 20% 91%;
+    --input: 214 20% 91%;
+    --ring: 215 35% 25%;
+    
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(215 35% 25%), hsl(215 35% 35%));
+    --gradient-secondary: linear-gradient(135deg, hsl(25 95% 53%), hsl(25 95% 63%));
+    --gradient-hero: linear-gradient(180deg, hsl(215 35% 25%), hsl(215 35% 20%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(0 0% 98%));
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(215 35% 25% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(215 35% 25% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(215 35% 25% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(215 35% 25% / 0.15);
+    --shadow-card: 0 2px 8px hsl(215 35% 25% / 0.08);
+    --shadow-glow: 0 0 20px hsl(25 95% 53% / 0.3);
+    
+    /* Transitions */
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Service Category Colors */
+    --gas-color: 22 93% 52%;
+    --roadside-color: 199 89% 48%;
+    --oxygen-color: 211 100% 50%;
+  }
+
+  .dark {
+    --background: 220 15% 10%;
+    --foreground: 0 0% 95%;
+    
+    --card: 220 15% 13%;
+    --card-foreground: 0 0% 95%;
+    
+    --popover: 220 15% 13%;
+    --popover-foreground: 0 0% 95%;
+    
+    --primary: 215 35% 35%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 25 95% 53%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 215 15% 20%;
+    --muted-foreground: 215 10% 65%;
+    
+    --accent: 25 95% 53%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    --border: 215 15% 25%;
+    --input: 215 15% 25%;
+    --ring: 215 35% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+@layer components {
+  /* Service cards hover effects */
+  .service-card {
+    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-xl;
+  }
+  
+  /* Map marker animations */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .pulse-animation {
+    animation: pulse 2s infinite;
+  }
+  
+  /* Loading animations */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)),
+      hsl(var(--muted-foreground) / 0.1),
+      hsl(var(--muted))
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  /* Fade in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  /* Speed 7 branding animation */
+  @keyframes speed-glow {
+    0%, 100% {
+      text-shadow: 0 0 10px hsl(var(--secondary) / 0.5);
+    }
+    50% {
+      text-shadow: 0 0 20px hsl(var(--secondary) / 0.8);
+    }
+  }
+  
+  .speed-7 {
+    animation: speed-glow 2s ease-in-out infinite;
+  }
+}
