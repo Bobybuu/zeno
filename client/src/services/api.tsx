@@ -1,7 +1,7 @@
 // src/services/api.tsx
 import axios from 'axios';
 
-const API_BASE_URL = 'https://api.zenoservices.co.ke/api'; // Update with your actual backend URL
+const API_BASE_URL = 'https://api.zenoservices.co.ke/api/v1'; // Update with your actual backend URL
 
 const api = axios.create({
   baseURL: API_BASE_URL,
