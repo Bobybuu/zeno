@@ -31,7 +31,6 @@ from .views import (
     HealthCheckView,
     VersionInfoView,
     
-   
 )
 
 # Create a router and register our viewsets
@@ -116,17 +115,7 @@ urlpatterns = [
     path('users/', UserViewSet.as_view({'get': 'list'}), name='user-list-legacy'),
     path('users/<uuid:pk>/', UserViewSet.as_view({'get': 'retrieve'}), name='user-detail-legacy'),
     
-    # ============ FULLY DEPRECATED ROUTES (to be removed) ============
-    # These routes reference views that no longer exist in the new implementation
-    # You'll need to either:
-    # 1. Create placeholder views that redirect to new endpoints
-    # 2. Remove them entirely and update clients
-    # 3. Implement them with the new architecture
     
-    # path('verify-otp/', VerifyOTPView.as_view(), name='verify-otp'),  # Replaced by verify-email
-    # path('resend-otp/', ResendOTPView.as_view(), name='resend-otp'),  # Replaced by resend-verification
-    # path('check-auth/', CheckAuthView.as_view(), name='check-auth'),  # Use /me/ endpoint instead
-    # path('verify-reset-code/', VerifyResetCodeView.as_view(), name='verify-reset-code'),  # Part of password reset flow
 ]
 
 # ============ CUSTOM ERROR HANDLERS ============
