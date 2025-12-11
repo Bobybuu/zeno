@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
-import { CartProvider } from "./context/CartContext"; // ✅ Import CartProvider
+import { CartProvider } from "./context/CartContext";
 import { DebugCart } from '@/components/DebugCart';
 
 
@@ -50,6 +50,8 @@ import { PWAInstallButton } from "@/components/PWAInstallButton";
 // Fallback
 import NotFound from "./pages/NotFound";
 import ErrorBoundary from "./components/ErrorBoundary";
+import CheckEmail from "./pages/CheckEmail";
+import VerifyEmail from "./pages/VerifyEmail";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -141,7 +143,9 @@ const AppRoutes = () => {
             <Register />
           </PublicRoute>
         } />
-      
+        
+        <Route path="/check-email" element={ <PublicRoute><CheckEmail /></PublicRoute> } />
+        <Route path="/verify-email" element={<PublicRoute><VerifyEmail /></PublicRoute>} />
         <Route path="/forgot-password" element={
           <PublicRoute>
             <ForgotPassword />
