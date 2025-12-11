@@ -319,7 +319,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         """Create user with AWS Cognito integration"""
-        from .cognito_client import cognito_client
+        from .cognito_client import CognitoClient
         
         with transaction.atomic():
             # Extract password before creating user
@@ -339,11 +339,11 @@ class RegisterSerializer(serializers.ModelSerializer):
                     password=password,  # Plain password for Cognito
                     first_name=user.first_name,
                     last_name=user.last_name,
-                    phone_number=user.phone_number
+                    phone_number=user.phone_number or ''
                 )
                 
                 # Update user with Cognito ID
-                user.cognito_user_id = cognito_response['user_id']
+                user.cognito_user_id = cognito_response['UserSub']
                 user.save(update_fields=['cognito_user_id'])
                 
                 logger.info(f"User {email} registered successfully in Cognito")
